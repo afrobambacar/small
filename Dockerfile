@@ -6,6 +6,9 @@ RUN apk update \
     && apk upgrade \
     && apk add bash
 
-USER node
+RUN addgroup -S app && adduser -S -g app app
 
-WORKDIR /home/node
+ENV HOME=/home/app
+
+USER app
+WORKDIR $HOME
