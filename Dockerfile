@@ -10,5 +10,11 @@ RUN addgroup -S app && adduser -S -g app app
 
 ENV HOME=/home/app
 
+COPY package.json npm-shrinkwrap.json $HOME/
+RUN chown -R app:app $HOME/*
+
 USER app
 WORKDIR $HOME
+RUN npm install && npm cache clean
+
+CMD ['node', 'index.js']
