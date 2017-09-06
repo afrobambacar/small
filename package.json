@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/afrobambacar/small/issues"
   },
-  "homepage": "https://github.com/afrobambacar/small#readme"
+  "homepage": "https://github.com/afrobambacar/small#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
 }
