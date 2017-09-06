@@ -1,0 +1,19 @@
+{
+  "name": "small",
+  "version": "1.0.0",
+  "description": "* Linking docker hub automated build with github * Running docker container with node-alpine * Testing an app with travis using docker * Testing ValidateService Hook in appspec.yml * PM2 with keymatrics",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/afrobambacar/small.git"
+  },
+  "author": "Jaecheol Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/afrobambacar/small/issues"
+  },
+  "homepage": "https://github.com/afrobambacar/small#readme"
+}
