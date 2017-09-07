@@ -11,7 +11,7 @@ RUN chown -R app:app $HOME/*
 
 USER app
 WORKDIR $HOME/app
-RUN npm install \
+RUN npm i -s \
     && npm cache clean
 
 USER root
