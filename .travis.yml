@@ -24,6 +24,7 @@ before_script:
 - docker-compose up -d
 - docker ps -a
 script:
+- chmod +x scripts/docker_test.sh
 - ./scripts/docker_test.sh
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
