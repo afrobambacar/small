@@ -1,0 +1,84 @@
+notifications:
+ email:
+   recipients:
+   - jclee.dev@gmail.com
+   on_success: change
+   on_failure: always
+dist: trusty
+language: node_js
+
+branches:
+  only:
+  - master
+sudo: required
+services:
+- docker
+env:
+- DOCKER_COMPOSE_VERSION=1.5.0
+before_install:
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
+install:
+- docker pull afrobambacar/small
+
+before_script:
+- docker-compose build
+- docker-compose up -d
+- docker ps -a
+script:
+- exit 1
+
+
+# after_success:
+# - gulp build
+
+# # client only
+# - HASH_VAL=`cat dist/home/ubuntu/ss/s/app/version.json | jq '.hash' | sed "s/\"//g"`
+# - mkdir -p dpl_cd_upload_client/${HASH_VAL}
+# - cp -R dist/home/ubuntu/ss/s/app/client/ dpl_cd_upload_client/${HASH_VAL}/
+
+# # all
+# - mkdir -p dpl_cd_upload
+# - cd dist/home/ubuntu/ss/s
+# - zip -r ${AWS_CODEDEPLOY_APPNAME} *
+# - cd ../../../../..
+# - mv dist/home/ubuntu/ss/s/${AWS_CODEDEPLOY_APPNAME}.zip dpl_cd_upload/${AWS_CODEDEPLOY_APPNAME}.zip
+
+# after_failure:
+# - exit 1
+
+# deploy:
+# - provider: s3
+#   region: $AWS_REGION
+#   bucket: $AWS_S3_YONGSAN_BUCKET
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
+#   local_dir: dpl_cd_upload_client
+#   skip_cleanup: true
+#   on: &1
+#     branch: dev
+
+# - provider: s3
+#   region: $AWS_REGION
+#   bucket: $AWS_S3_BUCKET
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
+#   local_dir: dpl_cd_upload
+#   skip_cleanup: true
+#   on: &1
+#     branch: dev
+
+# - provider: codedeploy
+#   region: $AWS_REGION
+#   bucket: $AWS_S3_BUCKET
+#   access_key_id: $AWS_ACCESS_KEY
+#   secret_access_key: $AWS_SECRET_KEY
+#   key: ${AWS_CODEDEPLOY_APPNAME}.zip
+#   bundle_type: zip
+#   application: $AWS_CODEDEPLOY_APPNAME
+#   deployment_group: $AWS_DEPLOYMENT_GROUP
+#   wait-until-deployed: true
+#   on: *1
+
