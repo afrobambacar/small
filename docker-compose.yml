@@ -2,7 +2,7 @@ version: "3"
 services:
   small:
     build: .
-    # image: afrobambacar/small
+    image: afrobambacar/small
     container_name: small
     ports:
       - 3000:3000
