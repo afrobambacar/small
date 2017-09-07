@@ -5,9 +5,9 @@ notifications:
    on_success: change
    on_failure: always
 dist: trusty
-language: node_js
-node_js:
-- '6'
+# language: node_js
+# node_js:
+# - '6'
 branches:
   only:
   - master
@@ -27,7 +27,12 @@ before_script:
 - docker-compose up -d
 - docker ps -a
 script:
-- exit 1
+- result=$(curl -s http://localhost:8080/hello/)
+  if [[ "$result" =~ "Hello World" ]]; then
+  exit 0
+  else
+  exit 1
+  fi
 
 
 # after_success:
