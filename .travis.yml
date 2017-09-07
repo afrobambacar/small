@@ -28,15 +28,16 @@ before_script:
 - docker ps -a
 script:
 - result=$(curl -s http://localhost:8080/hello/)
-  if [[ "$result" =~ "Hello World" ]]; then
+  if [[ "$result" =~ "world" ]]; then
   exit 0
   else
   exit 1
   fi
-
-
-# after_success:
-# - gulp build
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker push $DOCKER_REPO;
+    fi
 
 # # client only
 # - HASH_VAL=`cat dist/home/ubuntu/ss/s/app/version.json | jq '.hash' | sed "s/\"//g"`
