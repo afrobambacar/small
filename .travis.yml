@@ -6,7 +6,8 @@ notifications:
    on_failure: always
 dist: trusty
 language: node_js
-
+node_js:
+- '6'
 branches:
   only:
   - master
@@ -14,15 +15,13 @@ sudo: required
 services:
 - docker
 env:
-- DOCKER_COMPOSE_VERSION=1.5.0
-before_install:
+- DOCKER_COMPOSE_VERSION=1.15.0
+# before_install:
+install:
 - sudo rm /usr/local/bin/docker-compose
 - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
-install:
-- docker pull afrobambacar/small
-
 before_script:
 - docker-compose build
 - docker-compose up -d
