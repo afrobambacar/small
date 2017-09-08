@@ -19,10 +19,10 @@ install:
 - sudo mv docker-compose /usr/local/bin
 before_script:
 - docker-compose -f docker-compose-prod.yml build
-- docker-compose -f docker-compose-prod.yml up
+- docker-compose -f docker-compose-prod.yml up -d
 - docker ps -a
 script:
-- ./scripts/docker_test.sh
+- ./scripts/validate_service.sh
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
