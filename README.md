@@ -1,5 +1,7 @@
 # Small Test
 
+[![Build Status](https://travis-ci.org/afrobambacar/small.svg?branch=master)](https://travis-ci.org/afrobambacar/small)
+
 * Linking docker hub automated build with github (done)
 * Running docker container with node-alpine (done)
 * Building with node_modules (done)
