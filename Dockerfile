@@ -20,4 +20,4 @@ RUN npm i -s && npm cache clean
 
 USER root
 
-CMD ["service", "nginx", "start"]
+# CMD ["service", "nginx", "start"]
