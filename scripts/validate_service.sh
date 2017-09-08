@@ -5,7 +5,7 @@ retries=5
 interval=3
 
 function healthcheck {
-  result=$(curl -s http://localhost:3000/hello)
+  result=$(curl -s http://localhost/hello)
 }
 
 while [ $counter -lt $retries ]

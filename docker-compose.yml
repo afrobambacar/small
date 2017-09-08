@@ -9,10 +9,6 @@ services:
     volumes:
       - .:/home/app/app
       - nodemodules:/home/app/app/node_modules
-    healthcheck:
-      test: ["CMD-SHELL", "curl", "-s", "http://localhost:3000/hello"]
-      interval: 10s
-      timeout: 10s
-      retries: 3
+    command: bash -c "pm2-docker process.yml"
 volumes:
   nodemodules:

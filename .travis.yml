@@ -18,8 +18,8 @@ install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 before_script:
-- sed -i s/KEYMETRICS_PUBLIC/$KEYMETRICS_PUBLIC/g Dockerfile
-- sed -i s/KEYMETRICS_SECRET/$KEYMETRICS_SECRET/g Dockerfile
+- sed -i s/KEYMETRICS_PUBLIC/$KEYMETRICS_PUBLIC/g docker-compose-prod.yml
+- sed -i s/KEYMETRICS_SECRET/$KEYMETRICS_SECRET/g docker-compose-prod.yml
 - docker-compose -f docker-compose-prod.yml build
 - docker-compose -f docker-compose-prod.yml up -d
 - docker ps -a

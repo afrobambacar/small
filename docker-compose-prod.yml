@@ -5,4 +5,5 @@ services:
     image: afrobambacar/small
     container_name: small
     ports:
-      - 3000:3000
+      - 80:80
+    command: bash -c "service nginx status && pm2-docker --public KEYMETRICS_PUBLIC --secret KEYMETRICS_SECRET process.yml"
