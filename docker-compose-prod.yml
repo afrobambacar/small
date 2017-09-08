@@ -6,3 +6,8 @@ services:
     container_name: small
     ports:
       - 3000:3000
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/hello"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
