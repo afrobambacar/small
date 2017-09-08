@@ -11,7 +11,7 @@ function healthcheck {
 while [ $counter -lt $retries ]
 do
   healthcheck
-  if [ "$result" -eq "world" ]; then
+  if [[ "$result" -eq "world" ]]; then
     echo "connected"
     exit 0
   else
