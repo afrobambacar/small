@@ -11,8 +11,6 @@ branches:
 sudo: required
 services:
 - docker
-env:
-- DOCKER_COMPOSE_VERSION=1.15.0
 # before_install:
 install:
 - sudo rm /usr/local/bin/docker-compose
@@ -20,11 +18,10 @@ install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 before_script:
-- docker-compose build
-- docker-compose up -d
+- docker-compose -f docker-compose-prod.yml build
+- docker-compose -f docker-compose-prod.yml up
 - docker ps -a
 script:
-- chmod +x scripts/docker_test.sh
 - ./scripts/docker_test.sh
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
