@@ -7,4 +7,4 @@
 * Building with node_modules (done)
 * Testing an app with travis using docker (done)
 * Testing ValidateService Hook in appspec.yml
-* PM2 with keymatrics
+* PM2 with keymatrics (done)
