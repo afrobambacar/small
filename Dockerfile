@@ -20,4 +20,4 @@ COPY . $HOME/app
 RUN chown -R app:app $HOME/*
 USER app
 
-CMD ["pm2-docker", "index.js"]
+CMD ["pm2-docker", "--public", "KEYMETRICS_PUBLIC", "--secret", "KEYMETRICS_SECRET", "process.yml"]
