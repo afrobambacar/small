@@ -24,7 +24,7 @@ before_script:
 - docker-compose -f docker-compose-prod.yml up -d
 - docker ps -a
 script:
-- ./scripts/validate_service.sh
+- ./scripts/validate_service.sh http://localhost:3000
 after_success:
 - if [ "$TRAVIS_BRANCH" == "master" ]; then
   docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
