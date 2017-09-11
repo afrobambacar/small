@@ -5,7 +5,7 @@ retries=5
 interval=3
 
 function healthcheck {
-  status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
+  status=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000)
 }
 
 while [ $counter -lt $retries ]

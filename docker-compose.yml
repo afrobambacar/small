@@ -5,11 +5,10 @@ services:
     image: afrobambacar/small
     container_name: small
     ports:
-      - 80:80
       - 3000:3000
     volumes:
       - .:/home/app/app
       - nodemodules:/home/app/app/node_modules
-    command: bash -c "service nginx start && service nginx status && pm2-docker process.yml"
+    command: bash -c "pm2-docker process.yml"
 volumes:
   nodemodules:
