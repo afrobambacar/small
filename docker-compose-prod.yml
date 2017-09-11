@@ -5,5 +5,5 @@ services:
     image: afrobambacar/small
     container_name: small
     ports:
-      - 80:80
+      - 3000:3000
     command: bash -c "pm2-docker --public KEYMETRICS_PUBLIC --secret KEYMETRICS_SECRET process.yml"
