@@ -24,25 +24,26 @@ function unhealthy_log {
 while [ $retries -gt 0 ]
 do
   healthcheck
-
   if [ $status -eq 200 ]; then
     if [ $healthy -eq $healthy_threshold ]; then
       healthy_log $status $healthy $healthy_threshold $retries
-
       exit 0
     else
       healthy_log $status $healthy $healthy_threshold $retries
-
       ((healthy++))
       ((retries--))
       sleep $interval
     fi
   else
-    unhealthy_log $status $unhealthy $unhealthy_threshold $retries
-
-    ((unhealthy++))
-    ((retries--))
-    sleep $interval
+    if [ $unhealthy -eq $unhealthy_threshold ]; then
+      unhealthy_log $status $unhealthy $unhealthy_threshold $retries
+      exit 1
+    else
+      unhealthy_log $status $unhealthy $unhealthy_threshold $retries
+      ((unhealthy++))
+      ((retries--))
+      sleep $interval
+    fi
   fi
 done
   echo "timeouted"
