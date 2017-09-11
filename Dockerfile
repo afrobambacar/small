@@ -2,8 +2,6 @@
 
 FROM node:6.11.2
 
-RUN apt-get update && apt-get install nginx -y
-
 RUN useradd --user-group --create-home --shell /bin/false app \
     && npm i -g -s pm2
 
@@ -17,7 +15,5 @@ RUN chown -R app:app $HOME/*
 USER app
 WORKDIR $HOME/app
 RUN npm i -s && npm cache clean
-
-USER root
 
 # CMD ["service", "nginx", "start"]

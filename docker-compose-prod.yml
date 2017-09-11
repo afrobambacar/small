@@ -6,4 +6,4 @@ services:
     container_name: small
     ports:
       - 80:80
-    command: bash -c "service nginx start && service nginx status && pm2-docker --public KEYMETRICS_PUBLIC --secret KEYMETRICS_SECRET process.yml"
+    command: bash -c "pm2-docker --public KEYMETRICS_PUBLIC --secret KEYMETRICS_SECRET process.yml"
